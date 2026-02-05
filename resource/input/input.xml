@@ -1,0 +1,15 @@
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08">
+  <FIToFICstmrCdtTrf>
+    <GrpHdr>
+      <MsgId>MSGID1234567890</MsgId>
+      <CreDtTm>2024-06-01T12:00:00+00:00</CreDtTm>
+      <NbOfTxs>1</NbOfTxs>
+      <SttlmInf>
+        <SttlmMtd>CLRG</SttlmMtd>
+        <ClrSys>
+          <Cd>MEP</Cd>
+        </ClrSys>
+      </SttlmInf>
+    </GrpHdr>
+  </FIToFICstmrCdtTrf>
+</Document>

@@ -23,16 +23,13 @@ XSD:
 
 def regeneration_on_error_prompt(xsd : str , error : str) -> str :
     return f""" 
-The xml you generated 
+The xml :
 {xsd}
-after validation facing an error 
+the error in it :
 {error} 
 
 TASKS ;
--ANALYZE ERROR MESSAGE AND DO MINIMAL CHANGES TO THE GIVEN XML 
-- DO NOT REMOVE / DELETE GIVEN XML ELEMENTS 
-- ONLY MODIFY XML ELEMENTS VALUE OR CHANGE ITS ORDER TO MEET THE SEQUENCE
-
+-GENERATE MISSING ELEMENT AND ADD IT IMTO XML XPATH.
 RULES :
 - Output ONLY the XML
 - Do NOT add explanations
@@ -62,3 +59,62 @@ RULE :
 
 """
 
+def generate_value_from_rules(rule) :
+    return f"""
+Generate a valid sample value for an XML element with these rules:
+
+Name: {rule['name']}
+Type: {rule['type']}
+MinOccurs: {rule['minOccurs']}
+MaxOccurs: {rule['maxOccurs']}
+Nillable: {rule['nillable']}
+Facets: {rule['facets']}
+
+Task:
+Generate ONE valid value that satisfies the rules.
+
+Output format:
+Return ONLY the value.
+Do NOT add explanation.
+Do NOT add quotes unless required by the datatype.
+Do NOT add any text before or after.
+"""
+
+def generate_tag_with_value_from_error(err):
+    return f"""
+Genrate an xml tag along with valid value
+{err}
+Return only the tag and its value
+Do NOT add explanation.
+Do NOT add quotes unless required by the datatype.
+Do NOT add any text before or after.
+"""
+
+def add_tag_into_sample(tag,sample,errs):
+    return f"""
+    FROM {errs}
+    GET TO KNOW WHERE TO INSERT TAG 
+    AND
+    INSIDE THIS TAG
+{tag}
+INTO THIS SAMPLE
+{sample}
+OUTPUT FORMAT :
+RETURN THE MODIFIED SAMPLE ONLY.
+Do NOT add explanation.
+Do NOT add quotes unless required by the datatype.
+Do NOT add any text before or after.
+    """
+
+def remove_element(xml,errs):
+    return f"""
+FROM THE {errs} 
+REMOVE ONE OCUURENCE ALONG WITH ITS CHILD
+FROM THIS XML
+{xml}
+OUTPUT FORMAT :
+RETURN THE MODIFIED SAMPLE ONLY.
+Do NOT add explanation.
+Do NOT add quotes unless required by the datatype.
+Do NOT add any text before or after.
+    """

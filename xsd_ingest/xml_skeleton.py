@@ -3,13 +3,17 @@ import xml.etree.ElementTree as ET
 from lxml import etree
 from pathlib import Path
 from xmlschema.validators import XsdElement, XsdGroup
+from dotenv import load_dotenv
+import os
+
+load_dotenv("path.env")
 
 
 # ---------------- CONFIG ----------------
 
-BASE_DIR = Path(__file__).parent
-XSD_PATH = BASE_DIR / "resource" / "pacs008.xsd"
-OUTPUT_XML = BASE_DIR / "pacs008_skeleton.xml"
+BASE_DIR = Path(os.getenv("BASE_DIR"))
+XSD_PATH = BASE_DIR / os.getenv("XSD_PATH")
+SKELETON_DIR = BASE_DIR / os.getenv("SKELETON_DIR")
 
 
 # ---------------- CORE LOGIC ----------------
@@ -76,26 +80,36 @@ def generate_skeleton():
     if not XSD_PATH.exists():
         raise FileNotFoundError(f"XSD not found: {XSD_PATH}")
 
-    schema = xmlschema.XMLSchema(str(XSD_PATH))
+    for roots, dirs, files in os.walk(XSD_PATH):
+        for fname in files:
+            if fname.endswith(".xsd"):
+                XSD_FILE_PATH = Path(roots) / fname
+                print(XSD_FILE_PATH)
 
-    # Root XSD element (Document)
-    root_qname = next(iter(schema.elements))
-    root_xsd = schema.elements[root_qname]
+                OUTPUT_JSON = SKELETON_DIR / f"{XSD_FILE_PATH.stem}_skeleton.xml"
 
-    # Register namespace ONCE
-    ns = root_xsd.target_namespace
-    ET.register_namespace("", ns)
+                print("✔ Rules + Choice groups extracted to:", OUTPUT_JSON)
 
-    # Create XML root WITHOUT manual {ns}
-    xml_root = ET.Element(root_xsd.name)
+                schema = xmlschema.XMLSchema((XSD_FILE_PATH))
 
-    # Build skeleton
-    process_type(root_xsd.type, xml_root)
+                # Root XSD element (Document)
+                root_qname = next(iter(schema.elements))
+                root_xsd = schema.elements[root_qname]
 
-    # Pretty write
-    write_pretty(xml_root, OUTPUT_XML)
+                # Register namespace ONCE
+                ns = root_xsd.target_namespace
+                ET.register_namespace("", ns)
 
-    print(f"✅ Skeleton XML generated at: {OUTPUT_XML}")
+                # Create XML root WITHOUT manual {ns}
+                xml_root = ET.Element(root_xsd.name)
+
+                # Build skeleton
+                process_type(root_xsd.type, xml_root)
+
+                # Pretty write
+                write_pretty(xml_root, OUTPUT_JSON)
+
+                print(f"✅ Skeleton XML generated at: {OUTPUT_JSON}")
 
 
 if __name__ == "__main__":

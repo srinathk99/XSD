@@ -1,0 +1,644 @@
+{
+  "rules": {
+    "/AppHdr": {
+      "name": "AppHdr",
+      "xpath": "/AppHdr",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "BusinessApplicationHeaderV02",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/CharSet": {
+      "name": "CharSet",
+      "xpath": "/AppHdr/CharSet",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "UnicodeChartsCode",
+      "base": "string",
+      "facets": {}
+    },
+    "/AppHdr/Fr": {
+      "name": "Fr",
+      "xpath": "/AppHdr/Fr",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "Party44Choice__1",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Fr/FIId": {
+      "name": "FIId",
+      "xpath": "/AppHdr/Fr/FIId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "BranchAndFinancialInstitutionIdentification6__2",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Fr/FIId/FinInstnId": {
+      "name": "FinInstnId",
+      "xpath": "/AppHdr/Fr/FIId/FinInstnId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "FinancialInstitutionIdentification18__2",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Fr/FIId/FinInstnId/BICFI": {
+      "name": "BICFI",
+      "xpath": "/AppHdr/Fr/FIId/FinInstnId/BICFI",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "BICFIDec2014Identifier",
+      "base": "string",
+      "facets": {
+        "pattern": null
+      }
+    },
+    "/AppHdr/Fr/FIId/FinInstnId/ClrSysMmbId": {
+      "name": "ClrSysMmbId",
+      "xpath": "/AppHdr/Fr/FIId/FinInstnId/ClrSysMmbId",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "ClearingSystemMemberIdentification2__1",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Fr/FIId/FinInstnId/ClrSysMmbId/ClrSysId": {
+      "name": "ClrSysId",
+      "xpath": "/AppHdr/Fr/FIId/FinInstnId/ClrSysMmbId/ClrSysId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "ClearingSystemIdentification2Choice__1",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Fr/FIId/FinInstnId/ClrSysMmbId/ClrSysId/Cd": {
+      "name": "Cd",
+      "xpath": "/AppHdr/Fr/FIId/FinInstnId/ClrSysMmbId/ClrSysId/Cd",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "ExternalClearingSystemIdentification1Code",
+      "base": "string",
+      "facets": {
+        "minLength": 1,
+        "maxLength": 5
+      }
+    },
+    "/AppHdr/Fr/FIId/FinInstnId/ClrSysMmbId/MmbId": {
+      "name": "MmbId",
+      "xpath": "/AppHdr/Fr/FIId/FinInstnId/ClrSysMmbId/MmbId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "CBPR_RestrictedFINXMax28Text",
+      "base": "string",
+      "facets": {
+        "pattern": null,
+        "minLength": 1,
+        "maxLength": 28
+      }
+    },
+    "/AppHdr/Fr/FIId/FinInstnId/LEI": {
+      "name": "LEI",
+      "xpath": "/AppHdr/Fr/FIId/FinInstnId/LEI",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "LEIIdentifier",
+      "base": "string",
+      "facets": {
+        "pattern": null
+      }
+    },
+    "/AppHdr/To": {
+      "name": "To",
+      "xpath": "/AppHdr/To",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "Party44Choice__1",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/To/FIId": {
+      "name": "FIId",
+      "xpath": "/AppHdr/To/FIId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "BranchAndFinancialInstitutionIdentification6__2",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/To/FIId/FinInstnId": {
+      "name": "FinInstnId",
+      "xpath": "/AppHdr/To/FIId/FinInstnId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "FinancialInstitutionIdentification18__2",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/To/FIId/FinInstnId/BICFI": {
+      "name": "BICFI",
+      "xpath": "/AppHdr/To/FIId/FinInstnId/BICFI",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "BICFIDec2014Identifier",
+      "base": "string",
+      "facets": {
+        "pattern": null
+      }
+    },
+    "/AppHdr/To/FIId/FinInstnId/ClrSysMmbId": {
+      "name": "ClrSysMmbId",
+      "xpath": "/AppHdr/To/FIId/FinInstnId/ClrSysMmbId",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "ClearingSystemMemberIdentification2__1",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/To/FIId/FinInstnId/ClrSysMmbId/ClrSysId": {
+      "name": "ClrSysId",
+      "xpath": "/AppHdr/To/FIId/FinInstnId/ClrSysMmbId/ClrSysId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "ClearingSystemIdentification2Choice__1",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/To/FIId/FinInstnId/ClrSysMmbId/ClrSysId/Cd": {
+      "name": "Cd",
+      "xpath": "/AppHdr/To/FIId/FinInstnId/ClrSysMmbId/ClrSysId/Cd",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "ExternalClearingSystemIdentification1Code",
+      "base": "string",
+      "facets": {
+        "minLength": 1,
+        "maxLength": 5
+      }
+    },
+    "/AppHdr/To/FIId/FinInstnId/ClrSysMmbId/MmbId": {
+      "name": "MmbId",
+      "xpath": "/AppHdr/To/FIId/FinInstnId/ClrSysMmbId/MmbId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "CBPR_RestrictedFINXMax28Text",
+      "base": "string",
+      "facets": {
+        "pattern": null,
+        "minLength": 1,
+        "maxLength": 28
+      }
+    },
+    "/AppHdr/To/FIId/FinInstnId/LEI": {
+      "name": "LEI",
+      "xpath": "/AppHdr/To/FIId/FinInstnId/LEI",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "LEIIdentifier",
+      "base": "string",
+      "facets": {
+        "pattern": null
+      }
+    },
+    "/AppHdr/BizMsgIdr": {
+      "name": "BizMsgIdr",
+      "xpath": "/AppHdr/BizMsgIdr",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "Max35Text",
+      "base": "string",
+      "facets": {
+        "minLength": 1,
+        "maxLength": 35
+      }
+    },
+    "/AppHdr/MsgDefIdr": {
+      "name": "MsgDefIdr",
+      "xpath": "/AppHdr/MsgDefIdr",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "Max35Text",
+      "base": "string",
+      "facets": {
+        "minLength": 1,
+        "maxLength": 35
+      }
+    },
+    "/AppHdr/BizSvc": {
+      "name": "BizSvc",
+      "xpath": "/AppHdr/BizSvc",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "UsageIdentifierPatternText",
+      "base": "string",
+      "facets": {
+        "pattern": null,
+        "minLength": 6,
+        "maxLength": 35
+      }
+    },
+    "/AppHdr/MktPrctc": {
+      "name": "MktPrctc",
+      "xpath": "/AppHdr/MktPrctc",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "ImplementationSpecification1",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/MktPrctc/Regy": {
+      "name": "Regy",
+      "xpath": "/AppHdr/MktPrctc/Regy",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "Max350Text",
+      "base": "string",
+      "facets": {
+        "minLength": 1,
+        "maxLength": 350
+      }
+    },
+    "/AppHdr/MktPrctc/Id": {
+      "name": "Id",
+      "xpath": "/AppHdr/MktPrctc/Id",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "Max2048Text",
+      "base": "string",
+      "facets": {
+        "minLength": 1,
+        "maxLength": 2048
+      }
+    },
+    "/AppHdr/CreDt": {
+      "name": "CreDt",
+      "xpath": "/AppHdr/CreDt",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "CBPR_DateTime",
+      "base": "dateTime",
+      "facets": {
+        "pattern": null
+      }
+    },
+    "/AppHdr/CpyDplct": {
+      "name": "CpyDplct",
+      "xpath": "/AppHdr/CpyDplct",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "CopyDuplicate1Code",
+      "base": "string",
+      "facets": {
+        "enumeration": null
+      }
+    },
+    "/AppHdr/PssblDplct": {
+      "name": "PssblDplct",
+      "xpath": "/AppHdr/PssblDplct",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "YesNoIndicator",
+      "base": "boolean",
+      "facets": {}
+    },
+    "/AppHdr/Prty": {
+      "name": "Prty",
+      "xpath": "/AppHdr/Prty",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "Priority2Code",
+      "base": "string",
+      "facets": {
+        "enumeration": null
+      }
+    },
+    "/AppHdr/Rltd": {
+      "name": "Rltd",
+      "xpath": "/AppHdr/Rltd",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "BusinessApplicationHeader5__1",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Rltd/CharSet": {
+      "name": "CharSet",
+      "xpath": "/AppHdr/Rltd/CharSet",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "UnicodeChartsCode",
+      "base": "string",
+      "facets": {}
+    },
+    "/AppHdr/Rltd/Fr": {
+      "name": "Fr",
+      "xpath": "/AppHdr/Rltd/Fr",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "Party44Choice__1",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Rltd/Fr/FIId": {
+      "name": "FIId",
+      "xpath": "/AppHdr/Rltd/Fr/FIId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "BranchAndFinancialInstitutionIdentification6__2",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Rltd/Fr/FIId/FinInstnId": {
+      "name": "FinInstnId",
+      "xpath": "/AppHdr/Rltd/Fr/FIId/FinInstnId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "FinancialInstitutionIdentification18__2",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Rltd/Fr/FIId/FinInstnId/BICFI": {
+      "name": "BICFI",
+      "xpath": "/AppHdr/Rltd/Fr/FIId/FinInstnId/BICFI",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "BICFIDec2014Identifier",
+      "base": "string",
+      "facets": {
+        "pattern": null
+      }
+    },
+    "/AppHdr/Rltd/Fr/FIId/FinInstnId/ClrSysMmbId": {
+      "name": "ClrSysMmbId",
+      "xpath": "/AppHdr/Rltd/Fr/FIId/FinInstnId/ClrSysMmbId",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "ClearingSystemMemberIdentification2__1",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Rltd/Fr/FIId/FinInstnId/ClrSysMmbId/ClrSysId": {
+      "name": "ClrSysId",
+      "xpath": "/AppHdr/Rltd/Fr/FIId/FinInstnId/ClrSysMmbId/ClrSysId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "ClearingSystemIdentification2Choice__1",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Rltd/Fr/FIId/FinInstnId/ClrSysMmbId/ClrSysId/Cd": {
+      "name": "Cd",
+      "xpath": "/AppHdr/Rltd/Fr/FIId/FinInstnId/ClrSysMmbId/ClrSysId/Cd",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "ExternalClearingSystemIdentification1Code",
+      "base": "string",
+      "facets": {
+        "minLength": 1,
+        "maxLength": 5
+      }
+    },
+    "/AppHdr/Rltd/Fr/FIId/FinInstnId/ClrSysMmbId/MmbId": {
+      "name": "MmbId",
+      "xpath": "/AppHdr/Rltd/Fr/FIId/FinInstnId/ClrSysMmbId/MmbId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "CBPR_RestrictedFINXMax28Text",
+      "base": "string",
+      "facets": {
+        "pattern": null,
+        "minLength": 1,
+        "maxLength": 28
+      }
+    },
+    "/AppHdr/Rltd/Fr/FIId/FinInstnId/LEI": {
+      "name": "LEI",
+      "xpath": "/AppHdr/Rltd/Fr/FIId/FinInstnId/LEI",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "LEIIdentifier",
+      "base": "string",
+      "facets": {
+        "pattern": null
+      }
+    },
+    "/AppHdr/Rltd/To": {
+      "name": "To",
+      "xpath": "/AppHdr/Rltd/To",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "Party44Choice__1",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Rltd/To/FIId": {
+      "name": "FIId",
+      "xpath": "/AppHdr/Rltd/To/FIId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "BranchAndFinancialInstitutionIdentification6__2",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Rltd/To/FIId/FinInstnId": {
+      "name": "FinInstnId",
+      "xpath": "/AppHdr/Rltd/To/FIId/FinInstnId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "FinancialInstitutionIdentification18__2",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Rltd/To/FIId/FinInstnId/BICFI": {
+      "name": "BICFI",
+      "xpath": "/AppHdr/Rltd/To/FIId/FinInstnId/BICFI",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "BICFIDec2014Identifier",
+      "base": "string",
+      "facets": {
+        "pattern": null
+      }
+    },
+    "/AppHdr/Rltd/To/FIId/FinInstnId/ClrSysMmbId": {
+      "name": "ClrSysMmbId",
+      "xpath": "/AppHdr/Rltd/To/FIId/FinInstnId/ClrSysMmbId",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "ClearingSystemMemberIdentification2__1",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Rltd/To/FIId/FinInstnId/ClrSysMmbId/ClrSysId": {
+      "name": "ClrSysId",
+      "xpath": "/AppHdr/Rltd/To/FIId/FinInstnId/ClrSysMmbId/ClrSysId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "ClearingSystemIdentification2Choice__1",
+      "base": "complex",
+      "facets": {}
+    },
+    "/AppHdr/Rltd/To/FIId/FinInstnId/ClrSysMmbId/ClrSysId/Cd": {
+      "name": "Cd",
+      "xpath": "/AppHdr/Rltd/To/FIId/FinInstnId/ClrSysMmbId/ClrSysId/Cd",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "ExternalClearingSystemIdentification1Code",
+      "base": "string",
+      "facets": {
+        "minLength": 1,
+        "maxLength": 5
+      }
+    },
+    "/AppHdr/Rltd/To/FIId/FinInstnId/ClrSysMmbId/MmbId": {
+      "name": "MmbId",
+      "xpath": "/AppHdr/Rltd/To/FIId/FinInstnId/ClrSysMmbId/MmbId",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "CBPR_RestrictedFINXMax28Text",
+      "base": "string",
+      "facets": {
+        "pattern": null,
+        "minLength": 1,
+        "maxLength": 28
+      }
+    },
+    "/AppHdr/Rltd/To/FIId/FinInstnId/LEI": {
+      "name": "LEI",
+      "xpath": "/AppHdr/Rltd/To/FIId/FinInstnId/LEI",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "LEIIdentifier",
+      "base": "string",
+      "facets": {
+        "pattern": null
+      }
+    },
+    "/AppHdr/Rltd/BizMsgIdr": {
+      "name": "BizMsgIdr",
+      "xpath": "/AppHdr/Rltd/BizMsgIdr",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "Max35Text",
+      "base": "string",
+      "facets": {
+        "minLength": 1,
+        "maxLength": 35
+      }
+    },
+    "/AppHdr/Rltd/MsgDefIdr": {
+      "name": "MsgDefIdr",
+      "xpath": "/AppHdr/Rltd/MsgDefIdr",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "Max35Text",
+      "base": "string",
+      "facets": {
+        "minLength": 1,
+        "maxLength": 35
+      }
+    },
+    "/AppHdr/Rltd/BizSvc": {
+      "name": "BizSvc",
+      "xpath": "/AppHdr/Rltd/BizSvc",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "Max35Text",
+      "base": "string",
+      "facets": {
+        "minLength": 1,
+        "maxLength": 35
+      }
+    },
+    "/AppHdr/Rltd/CreDt": {
+      "name": "CreDt",
+      "xpath": "/AppHdr/Rltd/CreDt",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "CBPR_DateTime",
+      "base": "dateTime",
+      "facets": {
+        "pattern": null
+      }
+    },
+    "/AppHdr/Rltd/CpyDplct": {
+      "name": "CpyDplct",
+      "xpath": "/AppHdr/Rltd/CpyDplct",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "CopyDuplicate1Code",
+      "base": "string",
+      "facets": {
+        "enumeration": null
+      }
+    },
+    "/AppHdr/Rltd/Prty": {
+      "name": "Prty",
+      "xpath": "/AppHdr/Rltd/Prty",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "nillable": false,
+      "type": "BusinessMessagePriorityCode",
+      "base": "string",
+      "facets": {}
+    }
+  },
+  "choice_groups": []
+}

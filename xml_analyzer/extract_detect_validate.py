@@ -2,19 +2,37 @@ from lxml import etree
 from pathlib import Path
 import json
 import re
+from OpenAI.openaiClient import remove_element_call,xml_with_validation_error_regenerate,generate_tag_with_value_from_error_call,add_tag_into_sample_call
+from technique.loader import load_xsd_as_text
+from try_out.xsd import validate_xml_using_xsd_sxhema
 
 # ---------------- CONFIG ----------------
 
-BASE_DIR = Path(__file__).parent
-USER_XML = BASE_DIR / "input.xml"
+BASE_DIR = Path(__file__).parent.parent
+USER_XML = BASE_DIR / "resource" / "input"/"input.xml"
 RULES_DIR = BASE_DIR / "resource" / "rules"
 
 
 # ---------------- STEP 1: EXTRACT XPATHS WITH COUNTS ----------------
 
-def extract_paths_with_counts(xml_file):
-    tree = etree.parse(str(xml_file))
-    root = tree.getroot()
+def extract_paths_with_counts(xml_input):
+    # 1️⃣ Parse XML correctly based on input type
+    if isinstance(xml_input, (str, bytes)) and str(xml_input).lstrip().startswith("<"):
+        # XML STRING
+        print("string")
+        root = etree.fromstring(xml_input.encode("utf-8"))
+        tree = etree.ElementTree(root)
+
+    elif isinstance(xml_input, (str, Path)):
+        # FILE PATH (string or pathlib.Path)
+        print("path")
+        tree = etree.parse(str(xml_input))
+        root = tree.getroot()
+
+    else:
+        raise TypeError(f"Unsupported xml_input type: {type(xml_input)}")
+
+
     paths = {}
 
     def walk(elem, current_path):
@@ -44,7 +62,7 @@ def detect_schema(user_xml, schema_rules_map):
     sample_paths, _ = extract_paths_with_counts(user_xml)
 
     best_schema = None
-    best_score = 0
+    best_score = 70
 
     for schema_name, rules_file in schema_rules_map.items():
         with open(rules_file, "r") as f:
@@ -164,11 +182,31 @@ if __name__ == "__main__":
     rules_file = SCHEMA_RULES[schema_name]
 
     print("\n--- Validating XML Against Detected Schema ---\n")
-    validation_errors = validate_xml_with_rules(USER_XML, rules_file)
+    input=str(USER_XML)
+    validation_errors = validate_xml_with_rules(input, rules_file)
+    #validation_errors = validate_xml_using_xsd_sxhema(USER_XML, rules_file)
+    count=0
+    inp = load_xsd_as_text(USER_XML)
+    while True:
+        count += 1
+        if not validation_errors:
+            print("XML is VALID against schema rules ✔")
+            break
+        else:
+            print("XML is INVALID ❌\n")
+            errs=""
+            for err in validation_errors:
+                print(" -", err)
+                if "Missing" in err:
+                    tag = generate_tag_with_value_from_error_call(err)
+                    print(" -", tag)
+                    inp = add_tag_into_sample_call(tag, inp, err)
+                    print(inp)
+                if "Too many occurrences" in err:
+                    inp=remove_element_call(inp,err)
 
-    if not validation_errors:
-        print("XML is VALID against schema rules ✔")
-    else:
-        print("XML is INVALID ❌\n")
-        for err in validation_errors:
-            print(" -", err)
+
+        validation_errors = validate_xml_with_rules(inp, rules_file)
+        if count == 3:
+            break
+

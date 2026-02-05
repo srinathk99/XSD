@@ -1,9 +1,7 @@
-from OpenAI.openaiClient import generate_sample_from_skeleton,generate_xml_from_xsd,xml_with_validation_error_regenerate
-from xsd import validate_xml_using_xsd_sxhema
-from technique.find_schema import detect_matching_schema,detect_best_matching_schema
+from OpenAI.openaiClient import generate_sample_from_skeleton
 
 if __name__ == '__main__':
-    xsd_path = "resource/CstmrCdtTrfTraceFormat.xsd"
+    xsd_path = "resource/xsd/CstmrCdtTrfTraceFormat.xsd"
     ske_paath="CstmrCdtTrfTraceFormat_skeleton.xml"
 
     sample=generate_sample_from_skeleton(ske_paath,xsd_path)
